@@ -1,0 +1,43 @@
+{% extends 'Back/base.html.twig' %}
+{% block content %}
+    <br>
+    <br>
+    <br>
+    <br>
+    <div class="container mt -4" style="margin-right: 0px">
+
+<section id="breadcrumbs" class="breadcrumbs">
+
+        <div class="container">
+            <ol>
+                <li><a href="index.html">Home</a></li>
+                <li>Ajout d'un article</li>
+            </ol>
+        </div>
+    </section><!-- End Breadcrumbs -->
+
+
+    <section id="features" class="features">
+        <div class="container">
+
+            <div class="section-title" data-aos="fade-up">
+                <h2>Article supposition</h2>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6 d-flex align-items-stretch" data-aos="fade-up">
+
+                    {{form_start(format ,{'attr': {'novalidate': 'novalidate'}} ) }}
+                    {{form_end(format) }}
+
+                    {{ form_errors(format) }}
+                </div>
+
+
+            </div>
+
+        </div>
+
+    </section><!-- End Features Section -->
+    </div>
+{% endblock %}

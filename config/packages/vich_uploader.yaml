@@ -1,0 +1,7 @@
+vich_uploader:
+    db_driver: orm
+
+    mappings:
+        objectifs:
+            uri_prefix: /assets/img/Chirine
+            upload_destination: '%kernel.project_dir%/public/assets/img/Chirine'

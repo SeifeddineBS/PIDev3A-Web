@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+
+    <br>
+    <div class="container mt -4">
+        <h1>Ajouter une reponse</h1>
+        {{ form_start(form, {attr: {'novalidate': 'novalidate'}}) }}
+        <div class="row">
+            <div class="col-md-8"> {{ form_row(form.reponse) }}</div>
+        </div>
+        <div class="row">
+            <div class="col-md-4"> {{ form_row(form.date) }}</div>
+            <div class="col-md-4"> {{ form_row(form.email) }}</div>
+            <div class="col-md-4"> {{ form_row(form.id_user) }}</div>
+            <div class="col-md-4"> {{ form_row(form.question) }}</div>
+
+        </div>
+        {{ form_rest(form) }}
+        <br>
+        <button class="btn btn-primary"> Ajouter</button>
+        {{ form_end(form) }}
+        <br>
+    </div>
+
+{% endblock %}

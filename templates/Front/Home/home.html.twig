@@ -1,0 +1,224 @@
+{% extends 'Front/base.html.twig' %}
+
+
+
+{% block content %}
+    <!-- ======= Hero Section ======= -->
+    <section id="hero">
+        <div class="hero-container" data-aos="fade-up">
+            <h1>Bienvenue a Aura</h1>
+            <h2>Inspirez le positif</h2>
+        </div>
+    </section><!-- End Hero -->
+
+    <main id="main">
+        <!-- ======= About Section ======= -->
+        <section id="about" class="about">
+            <div class="container">
+
+                <div class="row justify-content-end">
+                    <div class="col-lg-11">
+                        <div class="row justify-content-end">
+
+                            <div class="col-lg-3 col-md-5 col-6 d-md-flex align-items-md-stretch">
+                                <div class="count-box py-5">
+                                    <i class="bi bi-emoji-smile"></i>
+                                    <span data-purecounter-start="0" data-purecounter-end="65" class="purecounter">10</span>
+                                    <p>Clients satisfaits</p>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-3 col-md-5 col-6 d-md-flex align-items-md-stretch">
+                                <div class="count-box py-5">
+                                    <i class="bi bi-journal-richtext"></i>
+                                    <span data-purecounter-start="0" data-purecounter-end="30" class="purecounter">20</span>
+                                    <p>Evenements et activites</p>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-3 col-md-5 col-6 d-md-flex align-items-md-stretch">
+                                <div class="count-box py-5">
+                                    <i class="bi bi-journal-richtext"></i>
+                                    <span data-purecounter-start="0" data-purecounter-end="25" class="purecounter">8</span>
+                                    <p>Articles</p>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-3 col-md-5 col-6 d-md-flex align-items-md-stretch">
+                                <div class="count-box pb-5 pt-0 pt-lg-5">
+                                    <i class="bi bi-award"></i>
+                                    <span data-purecounter-start="0" data-purecounter-end="50" class="purecounter">12</span>
+                                    <p>Objectifs et challenges</p>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+        </section><!-- End About Section -->
+
+        <!-- ======= Cta Section ======= -->
+        <section id="cta" class="cta">
+            <div class="container" data-aos="fade-in">
+
+                <div class="text-center">
+                    <h3>Objectifs</h3>
+                    <p>On vous propose des objectifs quotidiens que vous pouvez ajouter a votre liste. Et les effectuer!</p>
+                    <a class="cta-btn" href={{ path('mesObjectifs') }}>Acceder a vos objectifs</a>
+                </div>
+
+            </div>
+        </section><!-- End Cta Section -->
+
+        <section id="portfolio" class="portfolio">
+            <div class="container">
+
+                <div class="row portfolio-container" data-aos="fade-up">
+
+                    <div class="col-lg-4 col-md-6 portfolio-item filter-app">
+                        <div class="portfolio-wrap">
+                            <img src="assets/img/Chirine/ecran.jpg" class="img-fluid" alt="">
+                            <div class="portfolio-info">
+                                <h4>Mon objectif: Diminuer mon temps d'ecran</h4>
+                                <div class="portfolio-links">
+                                    <a href="{{ path('mesObjectifs') }}" title="More Details"><i class="bx bx-plus"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6 portfolio-item filter-app">
+                        <div class="portfolio-wrap">
+                            <img src="assets/img/Chirine/meditation.jpg" class="img-fluid" alt="">
+                            <div class="portfolio-info">
+                                <h4>Mon objectif: Faire de la meditation</h4>
+                                <div class="portfolio-links">
+                                    <a href="{{ path('mesObjectifs') }}" title="More Details"><i class="bx bx-plus"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6 portfolio-item filter-app">
+                        <div class="portfolio-wrap">
+                            <img src="assets/img/Chirine/pas.jpg" class="img-fluid" alt="">
+                            <div class="portfolio-info">
+                                <h4>Mon objectif: Pratiquer de la marche</h4>
+                                <div class="portfolio-links">
+                                    <a href="{{ path('mesObjectifs') }}" title="More Details"><i class="bx bx-plus"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+
+            </div>
+        </section>
+        <section size="10px">
+            <section  id="portfolio-details" class="cta portfolio-details container" size="10px" style="background-color: #9dc554">
+
+                <div   content="center">
+
+                    <div class="row">
+
+                        <div class="col-lg-4 col-md-12 col-7 portfolio-item filter-app" >
+                            <div class="portfolio-wrap">
+                                <div class="portfolio-details-slider swiper-container">
+                                    <div class="swiper-wrapper align-items-center">
+
+                                        <div class="swiper-slide" style="" size="20%">
+                                            <img src="../assets/img/portfolio/portfolio-details-1.jpg" alt="">
+                                        </div>
+
+                                        <div class="swiper-slide">
+                                            <img src="../assets/img/portfolio/portfolio-details-2.jpg" alt="">
+                                        </div>
+
+                                        <div class="swiper-slide">
+                                            <img src="../assets/img/portfolio/portfolio-details-3.jpg" alt="">
+                                        </div>
+
+                                    </div>
+                                    <div class="swiper-pagination"></div>
+                                </div>
+
+
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-12 col-7 portfolio-item filter-app" >
+                            <div class="portfolio-wrap">
+                                <div class="portfolio-details-slider swiper-container">
+                                    <div class="swiper-wrapper align-items-center">
+
+
+                                        <div class="swiper-slide">
+                                            <img src="../assets/img/portfolio/portfolio-details-8.jpg" alt="">
+                                        </div>
+
+                                        <div class="swiper-slide">
+                                            <img src="../assets/img/portfolio/portfolio-details-5.jpg" alt="">
+                                        </div>
+                                        <div class="swiper-slide">
+                                            <img src="../assets/img/portfolio/portfolio-details-7.jpg" alt="">
+                                        </div>
+
+                                    </div>
+                                    <div class="swiper-pagination"></div>
+                                </div>
+
+
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-12 col-7 portfolio-item filter-app" >
+                            <div class="portfolio-wrap">
+                                <div class="portfolio-details-slider swiper-container">
+                                    <div class="swiper-wrapper align-items-center">
+
+                                        <div class="swiper-slide" style="" size="20%">
+                                            <img src="../assets/img/portfolio/portfolio-details-1.jpg" alt="">
+                                        </div>
+
+                                        <div class="swiper-slide">
+                                            <img src="../assets/img/portfolio/portfolio-details-2.jpg" alt="">
+                                        </div>
+
+                                        <div class="swiper-slide">
+                                            <img src="../assets/img/portfolio/portfolio-details-3.jpg" alt="">
+                                        </div>
+
+                                    </div>
+                                    <div class="swiper-pagination"></div>
+                                </div>
+
+
+                            </div>
+                        </div>
+
+
+                    </div>
+                    <div style="padding-left: 500px">
+                        <a class="cta-btn " href={{ path('listactclient') }}>Rejoindre Nos Activites</a>
+
+                    </div>
+
+
+
+
+                </div>
+            </section><!-- End Portfolio Section -->
+        </section>
+        </div>
+
+        </div>
+        </aside>
+        </section>
+
+    </main><!-- End #main -->
+{% endblock %}
+
+
+
+

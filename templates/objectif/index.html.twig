@@ -1,0 +1,46 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <div class="container mt -4">
+        <h1>Gérer les objectifs</h1>
+        <br>
+        {% for message in app.flashes('success') %}
+            <div class="alert alert-success">
+                {{ message }}
+            </div>
+        {% endfor %}
+        <div class="text-right">
+            <a href="{{ path('ajouterObjectif')}}" class="btn btn-primary">Ajouter un objectif</a>
+        </div>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Description</th>
+                    <th>Réponse</th>
+                    <th>Date de debut</th>
+                    <th>Durée</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for objectif in objectifs %}
+                <tr>
+                    <td>{{ objectif.description }}</td>
+                    <td>{{ objectif.reponse }}</td>
+                    <td>{{ objectif.datedebut }}</td>
+                    <td>{{ objectif.duree }}</td>
+                    <td>
+                        <a href="{{ path('modifierObjectif', {id: objectif.id}) }}" class="btn btn-secondary">Modifier</a>
+                    </td>
+                    <td>
+                        <a href="{{ path('supprimerObjectif', {id: objectif.id}) }}" class="btn btn-danger" >Supprimer</a>
+                    </td>
+            {% endfor %}
+            </tbody>
+        </table>
+
+    </div>
+{% endblock %}

@@ -1,0 +1,103 @@
+{% extends 'Back/base.html.twig' %}
+{% block link %}
+    <link href={{ asset('../assets/css/searchStyle.css') }} rel="stylesheet" />
+
+{% endblock %}
+{% block content %}
+    <div class="wrapper">
+        <div class="main-panel">
+
+            <div class="content">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="card strpied-tabled-with-hover">
+                                <div class="card-header ">
+                                    <h4 class="card-title">Liste Clients</h4>
+
+                                    <div class="main">
+                                        {{ form_start(form, {attr: {'novalidate': 'novalidate'}}) }}
+                                        {{ form_row(form._token) }}
+                                        <div style="margin-left: 210px">{{ form_row(form.critere) }}</div>
+
+                                        <div class="input-group">
+
+                                            {{ form_widget(form.inputRecherche,{ 'attr': {'class': "form-control",
+                                                'placeholder': 'Recherche'|trans} }) }}
+
+
+                                                <input class="btn btn-secondary" type="submit" value ="rechercher">
+
+
+                                            </div>
+                                        </div>
+
+                                    {{ form_end(form, {'render_rest': false}) }}
+
+                                    </div>
+
+
+                                    <a class="nav-link" href="{{ path('pdfClients') }}">Generer un pdf</a>
+                                </div>
+                                <div class="card-body table-full-width table-responsive">
+                                    <table class="table table-hover table-striped">
+                                        <thead>
+                                        {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+
+                                        {% if app.user.role=='Admin' or app.user.role=='SAdmin' %}
+                                        <th>CIN</th>
+                                        <th>Nom</th>
+                                        <th>Prenom</th>
+                                        <th>Email</th>
+                                        <th>Tel</th>
+                                        <th>Adresse</th>
+                                        {% else %}
+
+                                        <th>Nom</th>
+                                        <th>Prenom</th>
+                                        <th>Tel</th>
+                                        <th>Adresse</th>
+                                        {% endif %}
+
+                                        </thead>
+                                        <tbody>
+
+
+                                        {% for user in users %}
+
+
+                                            <tr >
+                                                {% if app.user.role=='Admin' or app.user.role=='SAdmin' %}
+
+                                                <td>{{ user.id }}</td>
+                                                <td>{{ user.nom }}</td>
+                                                <td>{{ user.prenom }}</td>
+                                                <td>{{ user.email }}</td>
+                                                <td>{{ user.tel }}</td>
+                                                <td>{{ user.adresse }}</td>
+                                        {% else %}
+                                            <td>{{ user.nom }}</td>
+                                            <td>{{ user.prenom }}</td>
+                                            <td>{{ user.tel }}</td>
+                                            <td>{{ user.adresse }}</td>
+                                                {% endif %}
+
+
+
+                                            </tr >
+                                        {% endfor %}
+                                        {% endif %}
+
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

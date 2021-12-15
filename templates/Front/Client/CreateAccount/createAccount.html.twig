@@ -1,0 +1,157 @@
+{% extends 'Front/base.html.twig' %}
+
+
+
+
+
+
+{% block content %}
+<link href={{ asset('assets/css/CreateAccountstyle.css') }} rel="stylesheet">
+
+<div style="padding:70px">
+
+
+    {{ form_start(form, {attr: {'novalidate': 'novalidate'}}) }}
+    {{ form_row(form._token) }}
+    <section class="signup">
+
+
+        <div class="container">
+            <a  href={{ path('CoachCreateAccount') }}> Créer un compte en tant que coach </a>
+
+            <div class="signup-content">
+
+                <div class="signup-form">
+
+                    <h2 class="form-title">Créer un compte </h2>
+
+                    <div class="form-group">
+                            <div>
+
+                                {{ form_widget(form.id,{ 'attr': {'class': "span12",
+                                    'placeholder': 'Votre Cin'|trans}}) }}
+                                <div style="color:red;"> {{ form_errors(form.id) }}</div>
+                            </div>
+                        </div>
+
+                    <div class="form-group">
+                        <div>
+                            {{ form_widget(form.nom,{ 'attr': {'class': "span12",
+                                'placeholder': 'Votre Nom'|trans} }) }}
+                            <div style="color:red;"> {{ form_errors(form.nom) }}</div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div>
+                            {{ form_widget(form.prenom,{ 'attr': {'class': "span12",
+                                'placeholder': 'Votre Prenom'|trans} }) }}
+                            <div style="color:red;"> {{ form_errors(form.prenom) }}</div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div>
+                            {{ form_widget(form.email,{ 'attr': {'class': "span12",
+                                'placeholder': 'Votre Email'|trans} }) }}
+                            <div style="color:red;"> {{ form_errors(form.email) }}</div>
+
+
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div>
+                            {{ form_row(form.password.first,{ 'attr': {'class': "span12",
+                                'placeholder': 'Votre mot de passe'|trans} }) }}
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div>
+                            {{ form_row(form.password.second,{ 'attr': {'class': "span12",
+                                'placeholder': 'Confirmer votre mot de passe'|trans} }) }}
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div>
+                            {{ form_widget(form.tel,{ 'attr': {'class': "span12",
+                                'placeholder': 'Votre Numero'|trans} }) }}
+                            <div style="color:red;"> {{ form_errors(form.tel) }}</div>
+
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div>
+                            {{ form_widget(form.adresse) }}<p>Autoriser l'accès à votre localisation</p>
+
+                            <div style="color:red;"> {{ form_errors(form.adresse) }}</div>
+
+
+
+
+
+
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div>
+                           {{ form_widget(form.picture) }}
+                            <div style="color:red;"> {{ form_errors(form.picture) }}</div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div>
+                            {{ form_widget(form.captcha) }}
+                            <div style="color:red;"> {{ form_errors(form.captcha) }}</div>
+                        </div>
+                    </div>
+
+
+                    <button type="submit" class="btn btn-success">Ajouter</button>
+
+
+
+                </div>
+
+                <div class="signup-image">
+                    <figure><img src={{ asset('assets/img/CreateAccount/signup-image.jpg')}} alt="sing up image"></figure>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </div>
+
+<div id="divCheckbox" style="display: none;">
+    {{ form_rest(form) }}
+    {{ form_end(form, {'render_rest': false}) }}
+
+
+
+{% endblock %}
+
+
+
+{% block footer %}
+{% endblock %}

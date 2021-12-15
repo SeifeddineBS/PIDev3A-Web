@@ -1,0 +1,126 @@
+{% extends 'base.html.twig' %}
+
+   {% block css %}
+       <link href="{{ asset('assets/vendor/aos/aos.css') }}" rel="stylesheet">
+       <link href="{{ asset('assets/vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
+       <link href="{{ asset('assets/vendor/bootstrap-icons/bootstrap-icons.css') }}" rel="stylesheet">
+       <link href="{{ asset('assets/vendor/boxicons/css/boxicons.min.css') }}" rel="stylesheet">
+       <link href="{{ asset('assets/vendor/glightbox/css/glightbox.min.css') }}" rel="stylesheet">
+       <link href="{{ asset('assets/vendor/swiper/swiper-bundle.min.css') }}" rel="stylesheet">
+       <!-- Template Main CSS File -->
+       <link href="{{ asset('assets/css/style.css') }}" rel="stylesheet">
+   {% endblock %}
+
+{% block body %}
+<main id="main">
+
+    <!-- ======= Breadcrumbs ======= -->
+    <section id="breadcrumbs" class="breadcrumbs">
+        <div class="breadcrumb-hero">
+            <div class="container">
+                <div class="breadcrumb-hero">
+                    <h2>Details de l'objectif</h2>
+                    <p>“Avoir des objectifs est non seulement nécessaire pour nous motiver, mais c’est essentiel pour que nous restions en vie.” </p>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <ol>
+                <li><a href="index.html">Home</a></li>
+                <li>Details de l'objectif</li>
+            </ol>
+        </div>
+    </section><!-- End Breadcrumbs -->
+
+    <!-- ======= Portfolio Details Section ======= -->
+    <section id="portfolio-details" class="portfolio-details">
+        <div class="container">
+
+            <div class="row gy-4">
+
+                <div class="col-lg-8">
+                    <div class="portfolio-details-slider swiper-container">
+                        <div class="swiper-wrapper align-items-center">
+
+                            <div class="container">
+                                <h3>Résultat du suivi par jour</h3>
+                                <canvas id="suivis" width="400" height="100"></canvas>
+                                <br>
+                                <h3>Nombre d'objectifs par jour</h3>
+                                <canvas id="objectifs" width="400" height="100"></canvas>
+                            </div>
+
+                        </div>
+                        <div class="swiper-pagination"></div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4">
+                    <div class="portfolio-info">
+                        <h3>Informations sur l'objectif</h3>
+                        <ul>
+                            <li><strong>Description</strong>:{{objectif.description}}</li>
+                            <li><strong>Réponse</strong>:{{ objectif.reponse }}</li>
+                            <li><strong>Date de début</strong>:{{ objectif.dateDebut }}</li>
+                            <li><strong>Durée</strong>:{{ objectif.duree}}</li>
+                        </ul>
+                    </div>
+                    <div class="portfolio-description">
+                        <h2>Options</h2>
+                        <p>
+                            <a href="{{ path('modifierObjectif', {id: objectif.id}) }}" class="btn btn-secondary">Modifier</a>
+                            <a href="{{ path('supprimerObjectif', {id: objectif.id}) }}" class="btn btn-danger" >Supprimer</a>
+                            <a href="{{ path('suiviObjectif', {id: objectif.id}) }}" class="btn btn-primary" >Ajouter un suivi</a>
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </section><!-- End Portfolio Details Section -->
+
+</main><!-- End #main -->
+{% endblock %}
+{% block js %}
+    <script src="{{ asset('https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js') }}" integrity="sha512-s+xg36jbIujB2S2VKfpGmlC3T5V2TF3lY48DX7u2r9XzGzgPsa6wTpOQA7J9iffvdeBN0q9tKzRxVxw1JviZPg==" crossorigin="anonymous"></script>
+
+    <script>
+        let objectifs = document.querySelector("#suivis")
+        let objGraph = new Chart(objectifs, {
+            type: "pie",
+            data: {
+                labels: {{ suiviCount| raw }},
+                datasets: [{
+                    label: "Répartition des ojectives",
+                    data: {{ suiviValeur | raw}},
+                    backgroundColor: {{ suiviCouleur | raw}}
+                }]
+            }
+        })
+        let objectifss = document.querySelector("#objectifs")
+        let objsGraph = new Chart(objectifss, {
+            type: "bar",
+            data: {
+                labels: {{ dates | raw }},
+                datasets: [{
+                    label: "nombre d'objectifs par jour",
+                    data: {{ objCount| raw }},
+                    backgroundColor: {{ suiviCouleur | raw}}
+
+                }]
+            }
+        })
+    </script>
+    <script src="{{ asset('assets/vendor/aos/aos.js') }}"></script>
+    <script src="{{ asset('assets/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+    <script src="{{ asset('assets/vendor/glightbox/js/glightbox.min.js') }}"></script>
+    <script src="{{ asset('assets/vendor/isotope-layout/isotope.pkgd.min.js') }}"></script>
+    <script src="{{ asset('assets/vendor/php-email-form/validate.js') }}"></script>
+    <script src="{{ asset('assets/vendor/purecounter/purecounter.js') }}"></script>
+    <script src="{{ asset('assets/vendor/swiper/swiper-bundle.min.js') }}"></script>
+    <script src="{{ asset('assets/vendor/waypoints/noframework.waypoints.js') }}"></script>
+
+    <!-- Template Main JS File -->
+    <script src="{{ asset('assets/js/main.js') }}"></script>
+{% endblock %}

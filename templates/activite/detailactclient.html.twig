@@ -1,0 +1,271 @@
+
+{% extends 'Front/base.html.twig' %}
+
+
+{% block content %}
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+    <link href="../assets/css/style.css" rel="stylesheet">
+    <link href="../assets/vendor/aos/aos.css" rel="stylesheet">
+    <link href="../assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+    <link href="../assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+    <link href="../assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+    <link href="../assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../bundles/mercuryseriesflashy/css/flashy.css">
+    <main id="main">
+    <section id="breadcrumbs" class="breadcrumbs">
+        <div class="breadcrumb-hero">
+            <div class="container">
+                <div class="breadcrumb-hero">
+                    <h2>Activite/Therapie</h2>
+                    <p>
+                        “Je sais où je suis, qui je suis, et quel jour nous sommes : tels sont les tests, je suis saine d'esprit. La santé mentale est un bien précieux. Je l'économise comme les gens jadis économisaient de l'argent, pour en avoir suffisamment, le moment venu.”</p>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <ol>
+                <li>Activite</li>
+            </ol>
+
+
+        </div>
+    </section><!-- End Breadcrumbs -->
+
+    <!-- ======= Portfolio Details Section ======= -->
+    <section id="portfolio-details" class="portfolio-details">
+        <div class="container">
+
+            <div class="row gy-4">
+
+                <div class="col-lg-8">
+                    <div class="portfolio-details-slider swiper-container">
+                        <div class="swiper-wrapper align-items-center">
+
+                            <div class="swiper-slide">
+                                <img src="../assets/img/portfolio/portfolio-details-1.jpg" alt="">
+                            </div>
+
+                            <div class="swiper-slide">
+                                <img src="../assets/img/portfolio/portfolio-details-2.jpg" alt="">
+                            </div>
+
+                            <div class="swiper-slide">
+                                <img src="../assets/img/portfolio/portfolio-details-3.jpg" alt="">
+                            </div>
+
+                        </div>
+                        <div class="swiper-pagination"></div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4">
+                    {% for activite in actclient %}
+
+
+
+
+
+
+                        <div class="portfolio-info">
+                            {% if  is_granted('IS_AUTHENTICATED_FULLY') %}
+
+
+                            <nav id="navbar" class="navbar">
+                                <h3>Details</h3>
+                                <a  href="{{ path("rejoindreact",{"id":activite.id}) }}" class="getstarted"  data-toggle="modal" data-target="#confirm-delete">Rejoindre</a>
+                            </nav>
+                            {% endif %}
+
+
+
+                            <ul>
+                                <li><strong>Type</strong> :{{ activite.type}}</li>
+                                <li><strong>Lieu</strong>: {{ activite.lieu }}
+                                    <a href="{{path('test')}}" class="xy"><i class="bi bi-pin-fill"   ></i></a>
+                                </li>
+                                <li><strong>Date</strong>: {{ activite.date}}</li>
+                                <li><strong>Nombre max</strong>:{{ activite.nombremax}}</li>
+                                <li><strong>Duree</strong>:{{ activite.duree}} min</li>
+
+
+                                <!-- Display the countdown timer in an element -->
+                                <p id="demo"></p>
+
+
+
+
+
+                            </ul>
+                            <div class="container">
+                                <div id="time-down-counter" class="time-down-counter text-center mr-20">
+
+                                    <!-- Include Js Time Down Counter -->
+                                    <script type="text/javascript" src="../timeDownCounter.min.js"></script>
+                                    <script>
+                                        // Set the date we're counting down to
+                                        var countDownDate = new Date("{{ activite.date}}").getTime();
+
+                                        // Update the count down every 1 second
+                                        var x = setInterval(function() {
+
+                                            // Get today's date and time
+                                            var now = new Date().getTime();
+
+                                            // Find the distance between now and the count down date
+                                            var distance = countDownDate - now;
+
+                                            // Time calculations for days, hours, minutes and seconds
+                                            var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                                            var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                                            var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                                            var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+                                            // Display the result in the element with id="demo"
+                                            document.getElementById("demo").innerHTML = days + "d " + hours + "h "
+                                                + minutes + "m " + seconds + "s ";
+
+                                            // If the count down is finished, write some text
+                                            if (distance < 0) {
+                                                clearInterval(x);
+                                                document.getElementById("demo").innerHTML = "EXPIRED";
+                                            }
+                                        }, 1000);
+                                    </script>
+
+                                </div>
+                            </div>
+
+                            <div>
+                                {% if  is_granted('IS_AUTHENTICATED_FULLY') %}
+
+                                <section>
+                                    <fieldset class="rate">
+
+                                        <a href="{{path('AjouterNote',{idact:activite.id,iduser:"12345670",v:1})}}" class="xy"> <i class="bi bi-star"  data-index="1" title="1 stars" ></i>  </a>
+                                        <a href="{{path('AjouterNote',{idact:activite.id,iduser:"12345670",v:2})}}" class="xy" ><i class="bi bi-star"  data-index="2" title="2 stars"  content="\f005" ></i> </a>
+                                        <a href="{{path('AjouterNote',{idact:activite.id,iduser:"12345670",v:3})}}" class="xy"> <i class="bi bi-star"  data-index="3" title="3 stars" ></i>  </a>
+                                        <a href="{{path('AjouterNote',{idact:activite.id,iduser:"12345670",v:4})}}" class="xy"><i class="bi bi-star"  data-index="4" title="4 stars" ></i></a>
+                                        <a href="{{path('AjouterNote',{idact:activite.id,iduser:"12345670",v:5})}}" class="xy"><i class="bi bi-star"  data-index="5" title="5 stars"></i></a>
+                                    </fieldset>
+
+
+                                </section>
+                                <section>
+                                    <a href="{{path('aimerAct',{idact:activite.id,iduser:"12345670",v:1})}}" class="xy"><i class="bi bi-hand-thumbs-up"  data-index="1"  ></i></a>
+                                    <a href="{{path('aimerAct',{idact:activite.id,iduser:"12345670",v:0})}}" class="xy"><i class="bi bi-hand-thumbs-down-fill"  data-index="0" ></i></a>
+                                    <a class="bi bi-share-fill" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2F127.0.0.1%3A8000%2Flistactclient&amp;src=sdkpreparse"></a>
+
+                                </section>
+                                {% endif %}
+                                <div>
+
+                                </div>
+
+                                <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+                                <script
+                                        src="https://code.jquery.com/jquery-3.6.0.min.js"
+                                        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+                                        crossorigin="anonymous">
+                                </script>
+                                <script>
+                                    $(document).ready(function ()
+                                    {
+                                        $('.bi-star').css('color','grey')
+                                        {
+                                            $('.bi-star:eq('+0+')').css('color','gold');
+                                        }
+
+                                        $('.bi-star').mousemove(function ()
+                                        {
+                                            $('.bi-star').css('color','grey');
+                                            var curr = $(this).data('index');
+                                            for (i = 0 ; i <= curr; i++)
+                                                $('.bi-star:eq('+i+')').css('color','gold');
+                                        });
+
+                                        $('.bi-star').mouseleave(function ()
+                                        {
+                                            $('.fa-star').css('color','grey')
+
+                                            {
+                                                $('.bi-star:eq('+0+')').css('color','gold');
+                                            }
+                                        });
+                                        $('.bi-hand-thumbs-up').mousemove(function ()
+                                        {
+                                            $('.bi-hand-thumbs-up').css('color','grey');
+                                            var curr = $(this).data('index');
+                                            for (i = 0 ; i <= curr; i++)
+                                                $('.bi-hand-thumbs-up:eq('+i+')').css('color','blue');
+                                        });
+                                        $('.bi-hand-thumbs-up').mouseleave(function ()
+                                        {
+                                            $('.bi-hand-thumbs-up').css('color','grey')
+
+                                            {
+                                                $('.bi-hand-thumbs-up').css('color','grey');
+                                            }
+                                        });
+
+                                        $('.bi-hand-thumbs-down-fill').mousemove(function ()
+                                        {
+                                            $('.bi-hand-thumbs-down-fill').css('color','grey');
+                                            var curr = $(this).data('index');
+                                            for (i = 0 ; i <= curr; i++)
+                                                $('.bi-hand-thumbs-down-fill:eq('+i+')').css('color','red');
+                                        });
+                                        $('.bi-hand-thumbs-down-fill').mouseleave(function ()
+                                        {
+                                            $('.bi-hand-thumbs-down-fill').css('color','grey')
+
+                                            {
+                                                $('.bi-hand-thumbs-down-fill').css('color','grey');
+                                            }
+                                        });
+                                    });
+
+
+                                </script>
+                            </div>
+                        </div>
+                        <div class="portfolio-description">
+                        <h2>Description</h2>
+                        <p>
+                            {{ activite.description }}
+
+
+                        </p>
+                        </div>{% endfor %}
+                </div>
+
+
+            </div>
+
+        </div>
+
+    </section><!-- End Portfolio Details Section -->
+    </main>
+
+{% endblock %}
+
+
+ {% block js %}
+     <script src="../assets/vendor/aos/aos.js"></script>
+     <script src="../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+     <script src="../assets/vendor/glightbox/js/glightbox.min.js"></script>
+     <script src="../assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+     <script src="../assets/vendor/php-email-form/validate.js"></script>
+     <script src="../assets/vendor/purecounter/purecounter.js"></script>
+     <script src="../assets/vendor/swiper/swiper-bundle.min.js"></script>
+     <script src="../assets/vendor/waypoints/noframework.waypoints.js"></script>
+     <!-- Flashy depends on jQuery -->
+     <script src="//../code.jquery.com/jquery.js"></script>
+     <!-- Load Flashy default JavaScript -->
+     <script src="../bundles/mercuryseriesflashy/js/flashy.js"></script>
+     <!-- Include Flashy default partial -->
+
+
+ {% endblock %}
+

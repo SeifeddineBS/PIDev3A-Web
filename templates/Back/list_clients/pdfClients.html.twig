@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Aloha!</title>
+
+    <style type="text/css">
+        * {
+            font-family: Candara, Arial, sans-serif;
+        }
+        table{
+            font-size: 17px;
+        }
+        tfoot tr td{
+            font-weight: bold;
+            font-size: x-small;
+        }
+        .gray {
+            background-color: lightgray
+        }
+    </style>
+
+</head>
+<body>
+
+<table width="100%">
+    <tr>
+        <td valign="top"><img src="{{asset('assets/img/AuraLogo.png')}}" alt="" width="150"/></td>
+        <td align="right">
+            <h3>Aura</h3>
+            <pre>
+                Societe Aura
+                Adresse Esprit Ghazela
+                Fax: 70 323 543
+                Email aura.forgetpass@gmail.com
+                Date : {{ date }}
+            </pre>
+        </td>
+    </tr>
+
+</table>
+
+        {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+        {% if app.user.role == 'CoachV' or app.user.role=="CoachNV"  %}
+      <strong>Coach</strong> {{ app.user.nom }} {{ app.user.prenom }}<br/>
+        {% elseif app.user.role == 'Admin' or app.user.role=='SAdmin'  %}
+        <strong>Administrateur</strong> {{ app.user.nom }} {{ app.user.prenom }}
+        {% endif %}
+        {% endif %}
+        Email : {{ app.user.email }}
+
+
+
+
+
+
+
+<table width="100%">
+    <thead style="background-color: lightgray;">
+    <tr>
+        <th>#</th>
+        <th>Nom</th>
+        <th>Prenom</th>
+        <th>Tel</th>
+        <th>Adresse</th>
+    </tr>
+    </thead>
+    <tbody style="text-align:center;">
+    {% set i=0 %}
+    {% for user in users %}
+        {% set i = i + 1 %}
+
+        <tr>
+        <td>{{ i }}</td>
+
+        <td>{{ user.nom }}</td>
+        <td>{{ user.prenom }}</td>
+        <td>{{ user.tel }}</td>
+        <td>{{ user.adresse }}</td>
+    </tr>
+    {% endfor %}
+
+    </tbody>
+
+
+</table>
+
+</body>
+</html>

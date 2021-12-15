@@ -1,0 +1,22 @@
+{% extends 'Back/base.html.twig' %}
+{% block content %}
+
+    <div class="container mt -4" style="margin-right: 110px">
+        <h1>Modifier un objectif</h1>
+        {{ form_start(form, {attr: {'novalidate': 'novalidate'}}) }}
+        <div class="row">
+            <div class="col-md-6"> {{ form_row(form.description) }}</div>
+        </div>
+        <div class="row">
+            <div class="col-md-3"> {{ form_row(form.duree) }}</div>
+        </div>
+        {{ form_rest(form) }}
+        <br>
+        <button class="btn btn-primary"> Modifier</button>
+        {{ form_end(form) }}
+        <br>
+    </div>
+{% endblock %}
+{% block js %}
+
+{% endblock %}

@@ -1,0 +1,63 @@
+{% extends 'Front/base.html.twig' %}
+{% block content %}
+
+
+
+
+    <div class="container mt -4">
+        <br>
+        <br>
+        <br>
+        <br>
+
+        <h3>A vos claviers!</h3>
+        <br>
+        <form method="POST">
+            <input type="text" name="categorie">
+            <td><a href='{{ path('rechercheparCategorie') }}'> Rechercher</a></td>
+
+        </form>
+        <a href="{{ 'ajouterentraide' }}" class="btn btn-success">Ajouter une question</a>
+
+
+
+        <div id="Table">
+            <table id="tableObj" class="table table-striped">
+                <thead>
+                <tr>
+                    <th>Email</th>
+                    <th>Catégorie</th>
+                    <th>Question</th>
+                    <th>Date</th>
+                    <th> Réponses</th>
+                    <th> Supprimer</th>
+                    <th> Modifier</th>
+
+                </tr>
+                </thead>
+                <tbody>
+                {% for entraide in entraides %}
+                    <tr>
+
+                        <td>{{ entraide.email }}</td>
+                        <td>{{ entraide.categorie}}</td>
+                        <td>{{ entraide.question}}</td>
+                        <td>{{ entraide.date|date('Y/m/d')}}</td>
+
+                        <td><a href='{{ path('listeReponse', {'idQuestion':entraide.id}) }}'> Répondre </a></td>
+
+                        <td><a href='{{ path('supprimerentraidefront', {'idQuestion':entraide.id}) }}'> <button type="button" class="btn btn-outline-danger" data-dismiss="modal">Supprimer</button></a></td>
+
+                        <td><a href='{{ path('modifierentraide', {'id':entraide.id}) }}'> Modifier</a></td>
+
+
+                    </tr>
+                {% endfor %}
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+{% endblock %}
+
+

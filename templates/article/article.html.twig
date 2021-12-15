@@ -1,0 +1,92 @@
+{% extends 'Front/base.html.twig' %}
+{% block content %}
+    <br>
+    <br>
+    <br>
+    <br>
+    <section id="breadcrumbs" class="breadcrumbs">
+        <div class="breadcrumb-hero">
+            <div class="container">
+                <div class="breadcrumb-hero">
+                    <h2>Article</h2>
+
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <ol>
+                <li><a href="index.html">Home</a></li>
+                <li>article</li>
+            </ol>
+        </div>
+    </section><!-- End Breadcrumbs -->
+
+
+    <section id="features" class="features">
+        <div class="container">
+
+            <div class="section-title" data-aos="fade-up">
+                <h2>Article </h2>
+
+            </div>
+
+            <div class="row">
+                <div class="col-md-6 d-flex align-items-stretch" data-aos="fade-up">
+
+
+
+
+
+                </div>
+
+                <p>{{ Article }}</p>
+            </div>
+            <div class="blog-comments">
+
+                <h4 class="comments-count"> Commentaire</h4>
+                {% for com in Commentaire %}
+                    <div id="comment-1" class="comment">
+                        <div class="d-flex">
+                            <!-- image -->
+                            <div>
+                                <h5><a href="">Utilisateur</a> </h5>
+                                <time datetime="27-04-2021">27 Avr, 2021</time>
+                               <div>
+                                {{ com.commentaire}}
+                               </div>
+                                <form method="post" action="{{ path ('supprimercommfront', {'id' : com.id})}}">
+                                    <input type="hidden" name="_method" value="DELETE">
+                                    <button class="btn btn-success">supprimer</button>
+                                </form>
+
+                            </div>
+                        </div>
+
+                    </div><!-- End comment #1 -->
+                {% endfor %}
+                <td>
+
+
+
+
+
+
+                    <div >
+
+
+
+
+                        {{form_start(format ,{'attr': {'novalidate': 'novalidate'}} ) }}
+                        {{form_end(format) }}
+
+                        {{ form_errors(format) }}
+
+
+
+
+                    </div>
+
+            </div><!-- End blog comments -->
+        </div>
+    </section><!-- End Features Section -->
+{% endblock %}

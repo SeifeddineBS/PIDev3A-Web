@@ -1,0 +1,43 @@
+{% extends 'Back/base.html.twig' %}
+{% block content %}
+    <div style="margin-left: 210px">
+
+    <div class="container mt -4">
+        <h3>Gérer les Réponses</h3>
+        <br>
+
+
+        <div id="Table">
+            <table id="tableObj" class="table table-striped">
+                <thead>
+                <tr>
+
+
+
+                    <th>Nom et prénom</th>
+                    <th>Réponse</th>
+                    <th>date</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for repentraide in repentraides %}
+                    <tr>
+                        <td>{{ repentraide.idUser.nom }} {{ repentraide.idUser.prenom}}</td>
+                        <td>{{ repentraide.reponse}}</td>
+                        <td>{{ repentraide.createdAt}}</td>
+
+                        <td>
+                            <a href="{{ path('supprimerreponse', {id: repentraide.id}) }}" class="btn btn-danger" >Supprimer</a>
+                        </td>
+
+
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+    </div>
+{% endblock %}
+
+

@@ -1,0 +1,44 @@
+{% extends 'Front/base.html.twig' %}
+{% block content %}
+    <br>
+    <br>
+    <br>
+    <br>
+    <section id="breadcrumbs" class="breadcrumbs">
+        <div class="breadcrumb-hero">
+            <div class="container">
+                <div class="breadcrumb-hero">
+                    <h2>Ajouter un article</h2>
+
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <ol>
+                <li><a href="index.html">Home</a></li>
+                <li>Ajout d'un article</li>
+            </ol>
+        </div>
+    </section><!-- End Breadcrumbs -->
+
+
+    <div class="container">
+
+        <div class="section-title" data-aos="fade-up">
+            <h2>Article supposition</h2>
+        </div>
+
+        <div class="row">
+            <div >
+
+                {{form_start(format ,{'attr': {'novalidate': 'novalidate'}} ) }}
+                {{form_end(format) }}
+
+                {{ form_errors(format) }}
+            </div>
+
+
+        </div>
+
+    </div>
+{% endblock %}

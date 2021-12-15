@@ -1,0 +1,90 @@
+
+{% extends 'Front/base.html.twig' %}
+
+{% block content %}
+
+    <div class="container mt -4">
+        <br>
+        <br>
+        <br>
+        <br>
+        <h3>Votre aide, avis ainsi que votre expérience nous sont précieux :)</h3>
+        <br>
+        <br>
+        <br>
+
+
+
+
+        <div id="Table">
+
+            <table id="tab" class="tab" padding=300 >
+                <thead>
+                <hr>
+
+                <input type="submit" class="btn btn-primary" value="cliquez" id="b"> cliquer pour masquer/afficher les réponses.
+
+                <hr/>
+                <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"> </script>
+                <script>
+
+                    $(document).ready(
+                        function()
+                        {
+
+                            $("#b").mouseup(
+                                function(){
+                                    $(".tab").toggle("fast")
+                                }
+                            )
+                        }
+                    );
+
+                </script>
+
+
+                <tr>
+                          <th>Nom et Prénom</th>
+                          <th>Réponse</th>
+                          <th>Date</th>
+                          <th>Action</th>
+
+
+                </tr>
+                </thead>
+                <tbody>
+
+               <h1>{{ qs.question }}</h1>
+                {% for repentraide in listerep %}
+                    <tr>
+                        <td>{{ repentraide.iduser.nom}} {{ repentraide.iduser.prenom}}</td>
+                         <td>{{ repentraide.reponse}}</td>
+                        <td>{{ repentraide.createdAt}}</td>
+
+
+                        <td><a href='{{ path('modifierreponse', {'id':repentraide.id}) }}'> Modifier</a></td>                    </tr>
+                {% endfor %}
+
+                <div class="container mt -4">
+                    {{ form_start(form, {attr: {'novalidate': 'novalidate'}}) }}
+                    <div class="row">
+                        <div class="col-md-8"> {{ form_row(form.reponse) }}</div>
+                    </div>
+                    {{ form_rest(form) }}
+                    <br>
+                    <button class="btn btn-primary"> Ajouter</button>
+                    {{ form_end(form) }}
+                    <br>
+                </div>
+                <td>
+                <br>
+                <br>
+                <br>
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+{% endblock %}
+
+

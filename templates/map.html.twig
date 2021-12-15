@@ -1,0 +1,74 @@
+
+
+{% block body %}
+<!doctype html>
+<html class="no-js" lang="en">
+<head>
+    <title>OPEN STREETMAP</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+          integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+          crossorigin=""/>
+    <link rel="stylesheet" href="bundles/mercuryseriesflashy/css/flashy.css">
+
+
+    <style>
+        #MaCarte {
+            height: 480px;
+        }
+    </style>
+</head>
+
+<body>
+<div id="MaCarte"></div>
+
+<script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+        integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+        crossorigin=""></script>
+<div>
+<br>
+
+    <div>
+        {{ form_start(MapForm) }}
+
+
+    {{ form_end(MapForm) }}
+</div>
+<script>
+
+function chercherMap(LONG,LAT,V) {
+
+    var carte = L.map('MaCarte').setView([LONG, LAT], 13);
+    L.tileLayer('https://{s}.tile.openstreetmap.fr/osmfr/{z}/{x}/{y}.png', {
+        attribution: 'données © <a href="//osm.org/copyright">OpenStreetMap</a>/ODbL - rendu <a href="//openstreetmap.fr">OSM France</a>',
+        minZoom: 1,
+        maxZoom: 20
+    }).addTo(carte);
+    var marqueur = L.marker([LONG,LAT]).addTo(carte);
+
+    marqueur.bindPopup(V);
+}
+
+</script>
+
+<script type="text/javascript">
+    chercherMap( '36.806','10.182','ariana')
+</script>
+    <!-- Flashy depends on jQuery -->
+    <script src="http://code.jquery.com/jquery.js"></script>
+    <!-- Load Flashy default JavaScript -->
+    <script src="bundles/mercuryseriesflashy/js/flashy.js"></script>
+    <!-- Include Flashy default partial -->
+    {{ include('actclient/notif.html.twig') }}
+    <div>
+
+</div>
+
+
+
+
+</div>
+
+</body>
+</html>
+{% endblock %}

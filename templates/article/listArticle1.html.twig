@@ -1,0 +1,130 @@
+{% extends 'Front/base.html.twig' %}
+
+{% block content %}
+    <br>
+    <br>
+    <br>
+    <section id="breadcrumbs" class="breadcrumbs">
+        <div class="breadcrumb-hero">
+            <div class="container">
+                <div class="breadcrumb-hero">
+                    <h2>article</h2>
+
+
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <ol>
+                <li>Article</li>
+            </ol>
+
+
+        </div>
+    </section><!-- End Breadcrumbs -->
+    <section id="portfolio" class="portfolio">
+        <div class="container">
+
+            <div class="dropdown">
+                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" >
+                    Liste Triée
+
+                </button>
+                <div class="dropdown"aria-labelledby="dropdownMenuButton">
+
+
+                    <a class="dropdown-item" href="{{ path('showarticlesTN') }}">TriParNom</a>
+                    <a class="dropdown-item" href="{{ path('showarticlesTC') }}">TriParTheme</a>
+
+                </div>
+            </div>
+
+        </div>
+        <a href="{{ path('ajouterarticle')}}" class="btn btn-primary">Ajouter un article</a>
+        <div>
+            <div style="text-align: right;"/>
+
+            <form method="post" action="{{ path('rechercheart') }}">
+
+                <input type="text" name="search"> <input type="submit"value="Recherche" class="btn btn-info">
+                <i class="fa ti-search"></i>
+
+            </form>
+            <div class="navigation">
+                {{ knp_pagination_render(Article ) }}
+            </div>
+
+            <div class="row">
+                <div class="col-lg-12 d-flex justify-content-center" data-aos="fade-up">
+                    <ul id="portfolio-flters">
+                        <li data-filter="*" class="filter-active">Tous</li>
+                        <li data-filter=".filter-card">Mes article</li>
+                        <li data-filter=".filter-web">Articles</li>
+
+                    </ul>
+                </div>
+
+            </div>
+            <div class="row portfolio-container" data-aos="fade-up">
+
+
+
+                {% for activite in Article %}
+
+                    <div class="col-lg-4 col-md-6 portfolio-item filter-card">
+                        <div class="portfolio-wrap">
+                            <img src="assets/img/portfolio/portfolio-2.jpg" class="img-fluid" alt="">
+                            <div class="portfolio-info">
+                                <h4>{{ activite.titre }}</h4>
+                                <h5>{{ activite.theme }}</h5>
+
+                                <p>{{ activite.date }}</p>
+                                <div class="portfolio-links">
+                                    <a href="assets/img/portfolio/portfolio-4.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title=""><i class="bx bx-plus"></i></a>
+                                    <a  href="{{ path("modifierArticle",{"id":activite.id}) }}">edit</a>
+
+                                    <form method="post" action="{{ path ('supprimerArticle', {'id' : activite.id})}}">
+                                        <input type="hidden" name="_method" value="DELETE">
+                                        <button class="btn btn-success">remove</button>
+                                    </form>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+
+                {% for activite in Articleapp %}
+
+                    <div class="col-lg-4 col-md-6 portfolio-item filter-web">
+                        <div class="portfolio-wrap">
+                            <img src="assets/img/portfolio/portfolio-2.jpg" class="img-fluid" alt="">
+                            <div class="portfolio-info">
+                                <h4>{{ activite.titre }}</h4>
+                                <h5>{{ activite.theme }}</h5>
+
+                                <p>{{ activite.date }}</p>
+                                <div class="portfolio-links">
+                                    <a href="assets/img/portfolio/portfolio-4.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title=""><i class="bx bx-plus"></i></a>
+                                    <a  href="{{ path("articledetail",{"id":activite.id}) }}">Article</a>
+
+
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+
+
+
+            </div>
+            <div class="navigation">
+                {{ knp_pagination_render(Articleapp) }}
+            </div>
+        </div>
+    </section>
+
+
+{% endblock %}
+

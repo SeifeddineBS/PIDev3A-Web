@@ -1,0 +1,87 @@
+{% extends 'Front/base.html.twig' %}
+
+{% block content %}
+
+    <main id="main">
+
+        <!-- ======= Breadcrumbs ======= -->
+        <section id="breadcrumbs" class="breadcrumbs">
+            <div class="breadcrumb-hero">
+                <div class="container">
+                    <div class="breadcrumb-hero">
+                        <h2>Classement </h2>
+                       
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <div style="padding: 30px"></div>
+
+                <ol>
+                <li><a href="index.html">Home</a></li>
+                <li>Classement</li>
+                </ol>
+            </div>
+        </section><!-- End Breadcrumbs -->
+          <div class="content">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="card">
+
+                           <div class="content table-responsive table-full-width ">
+                                <table class="table table-hover table-striped">
+                                    <thead>
+                                    <th>client</th>
+                                    <th>niveau</th>
+                                    <th>position</th>
+                                    <th>nombre de points </th>
+                                   
+                                    
+                                    </thead>
+                                    <tbody>
+                                    {% for classement in classements %}
+                                    <tr>
+                                        <td>{{ classement.idClient }}</td>
+                                        <td>{{classement.idNiveau}}</td>
+                                        <td>{{ classement.position}}</td>
+                                        <td>{{ classement.nbPoints}}</td>
+                                        
+
+                                        
+
+                                    </tr>
+                                    {% endfor %}
+
+
+
+                                    </tbody>
+                                </table>
+
+                            </div>
+                         </div>
+                       </div>
+                     </div>
+                 </div>
+           </div>
+
+
+  </main><!-- End #main -->
+  <!-- ======= Footer ======= -->
+
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  <!-- Vendor JS Files -->
+  <script src="/assets/vendor/aos/aos.js"></script>
+  <script src="/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="/assets/vendor/glightbox/js/glightbox.min.js"></script>
+  <script src="/assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+  <script src="/assets/vendor/php-email-form/validate.js"></script>
+  <script src="/assets/vendor/purecounter/purecounter.js"></script>
+  <script src="/assets/vendor/swiper/swiper-bundle.min.js"></script>
+  <script src="/assets/vendor/waypoints/noframework.waypoints.js"></script>
+
+  <!-- Template Main JS File -->
+  <script src="/assets/js/main.js"></script>
+    <div style="padding: 70px"></div>
+{% endblock %}

@@ -1,0 +1,32 @@
+{% extends 'Back/base.html.twig' %}
+{% block content %}
+
+    <div class="container mt -4" style="margin-right: 110px">
+        <h3>Gérer les objectifs des clients</h3>
+        <br>
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>Description</th>
+                <th>Réponse</th>
+                <th>Date de début</th>
+                <th>Durée</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for objectif in objectifs %}
+            <tr>
+                <td>{{ objectif.description }}</td>
+                <td>{{ objectif.reponse }}</td>
+                <td>{{ objectif.datedebut }}</td>
+                <td>{{ objectif.duree }}</td>
+                <td>
+                    <a href="{{ path('mailObjectif')}}" class="btn btn-primary" >Envoyer un mail</a>
+                </td>
+
+                {% endfor %}
+            </tbody>
+        </table>
+
+    </div>
+{% endblock %}

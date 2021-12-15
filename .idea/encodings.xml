@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="Encoding">
+    <file url="file://$PROJECT_DIR$/src/Controller/API/activiteController.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/Controller/API/activiteController.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/Controller/ActclientController.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/Controller/PropoTherapieController.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/Controller/TestController.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/Controller/ThclientController.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/Controller/TherapieController.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/Data" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/Entity/Map.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/Entity/Participationactivte.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/Form/ActivitePropoType.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/Form/ActiviteType.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/Form/MapType.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/Form/SearchForm.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/Form/TherapiePropoType.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/Form/TherapieType.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/Repository/ActiviteRepository.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/templates/actclient" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/templates/activite" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/templates/article/modifierArticleback.html.twig" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/templates/base.html.twig" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/templates/baseBack.html.twig" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/templates/chat_frame.html.twig" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/templates/map.html.twig" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/templates/propo_therapie" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/templates/thclient" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/templates/therapie" charset="UTF-8" />
+    <file url="PROJECT" charset="windows-1252" />
+  </component>
+</project>

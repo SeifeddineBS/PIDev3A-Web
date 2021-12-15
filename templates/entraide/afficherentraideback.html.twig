@@ -1,0 +1,41 @@
+{% extends 'Back/base.html.twig' %}
+{% block content %}
+<div style="margin-left: 210px">
+
+    <div class="container mt -4">
+        <h3>Gérer les Entraides</h3>
+        <br>
+
+
+        <div id="Table">
+            <table id="tableObj" class="table table-striped">
+                <thead>
+                <tr>
+
+                    <th>email</th>
+                    <th>categorie</th>
+                    <th>question</th>
+                    <th>date</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for entraide in entraides %}
+                    <tr>
+                        <td>{{ entraide.email }}</td>
+                        <td>{{ entraide.categorie}}</td>
+                        <td>{{ entraide.question}}</td>
+                        <td>{{ entraide.date|date('Y/m/d')}}</td>
+                        <td>
+                            <a href="{{ path('supprimerentraide', {id: entraide.id}) }}" class="btn btn-danger" >Supprimer</a>
+                        </td>
+
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+

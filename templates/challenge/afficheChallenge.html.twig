@@ -1,0 +1,105 @@
+{% extends 'Front/base.html.twig' %}
+
+
+
+{% block content %}
+  <main id="main">
+
+    <!-- ======= Breadcrumbs ======= -->
+    <section id="breadcrumbs" class="breadcrumbs">
+      <div class="breadcrumb-hero">
+        <div class="container">
+          <div class="breadcrumb-hero">
+            <h2>Nos Challenges</h2>
+          </div>
+        </div>
+      </div>
+      <div class="container">
+        <ol>
+          <li><a href="index.html">Home</a></li>
+          <li>Challenges</li>
+        </ol>
+        <div class="container align-center">
+          <div class="row" >
+            <div class="col-md-3">
+            <div align="center">
+
+
+            </div>
+
+        </div>
+
+        </div>
+      </div>
+    </section><!-- End Breadcrumbs -->
+
+    <!-- ======= Portfolio Section ======= -->
+    <section id="portfolio" class="portfolio">
+      <div class="container">
+
+        <div class="row">
+          <div class="col-lg-12 d-flex justify-content-center" data-aos="fade-up">
+            <ul id="portfolio-flters">
+              <li data-filter="*" class="filter-active">Tous Les Challenges </li>
+              <button id="button" type="button" class="btn btn-outline-default btn-rounded waves-effect">	<a href="{{ 'MesChallenges' }}"  class="at-linkactive">Mes Challenges  </a></button>
+
+            </ul>
+          </div>
+        </div>
+
+        <div class="row portfolio-container" data-aos="fade-up">
+          {% if challenges %}
+            {% for challenge in challenges %}
+              <div class="col-lg-4 col-md-6 portfolio-item filter-app">
+                <div class="portfolio-wrap">
+                  <img src="/assets/img/portfolio/portfolio-1.jpg" class="img-fluid" alt="">
+                  <div class="portfolio-info">
+                    <h4>{{ challenge.titre }}</h4>
+                    <p>Date debut : {{ challenge.dateDebut|date('d/m/Y') }}</p>
+                    <div class="portfolio-links">
+                      <a href="{{ path ('rejoindreChallenge', {'id' : challenge.id})}}"   title="rejoindre"><i class="bx bx-plus" ></i></a>
+                      <a href="/challenge/{{ challenge.id }}" title="Plus de  Details"><i class="bx bx-link"></i></a>
+                     
+                    </div>
+                  </div>
+                </div>
+              </div>
+            {% endfor %} 
+
+          {% else %}
+          <p class="description">Aucun challenge</p>
+          {% endif %} 
+            
+          
+
+
+          
+
+        </div>
+        
+
+      </div>
+    </section><!-- End Portfolio Section -->
+
+  </main><!-- End #main -->
+
+  <!-- ======= Footer ======= -->
+
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  <!-- Vendor JS Files -->
+  <script src="/assets/vendor/aos/aos.js"></script>
+  <script src="/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="/assets/vendor/glightbox/js/glightbox.min.js"></script>
+  <script src="/assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+  <script src="/assets/vendor/php-email-form/validate.js"></script>
+  <script src="/assets/vendor/purecounter/purecounter.js"></script>
+  <script src="/assets/vendor/swiper/swiper-bundle.min.js"></script>
+  <script src="/assets/vendor/waypoints/noframework.waypoints.js"></script>
+
+  <!-- Template Main JS File -->
+  <script src="/assets/js/main.js"></script>
+
+</body>
+{% endblock %}
+

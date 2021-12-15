@@ -1,0 +1,17 @@
+{% extends 'Front/base.html.twig' %}
+
+
+
+
+{% block title %}{% endblock %}
+
+{% block content %}
+<div style="padding:70px">
+</div>
+<p>
+        Un courriel a ete envoye contenant un lien sur lequel vous pouvez cliquer pour reinitialiser votre mot de passe.
+        Ce lien expirera dans {{ resetToken.expirationMessageKey|trans(resetToken.expirationMessageData, 'ResetPasswordBundle') }}.
+    </p>
+        <p>Si vous ne recevez pas d'e-mail, verifiez votre dossier de courrier indesirable (spam) ou  <a href="{{ path('app_forgot_password_request') }}">Ressayez</a>.</p>
+{% endblock %}
+{% block footer %} {% endblock %}

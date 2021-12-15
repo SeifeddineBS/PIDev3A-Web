@@ -1,0 +1,20 @@
+{% extends 'Front/base.html.twig' %}
+
+{% block title %}{% endblock %}
+
+
+{% block content %}
+    <div style="padding:70px">
+    </div>
+
+<h1>Reinitialiser votre mot de passe</h1>
+
+    {{ form_start(resetForm) }}
+        {{ form_row(resetForm.plainPassword) }}
+
+        <button class="btn btn-primary">Reinitialiser votre mot de passe</button>
+    {{ form_end(resetForm) }}
+{% endblock %}
+
+
+{% block footer %} {% endblock %}

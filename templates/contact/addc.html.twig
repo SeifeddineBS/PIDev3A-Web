@@ -1,0 +1,39 @@
+{% extends 'Front/base.html.twig' %}
+{% block content %}
+
+        <br>
+        <br>
+        <div class="container mt -4">
+            <br>
+            <br>
+            <h2>Contactez-nous!</h2>
+            {{ form_start(form, {attr: {'novalidate': 'novalidate'}}) }}
+            <div class="row">
+                <div class="col-md-8"> {{ form_row(form.type) }}</div>
+                <br>
+                <br>
+                <br>
+            </div>
+            <div class="row">
+
+                <div class="col-md-4"> {{ form_row(form.email) }}</div>
+                <br>
+                <br>
+                <br>
+                <br>
+                <div class="col-md-4"> {{ form_row(form.champ) }}</div>
+                <br>
+                <br>
+                <br>
+                <div class="col-md-4"> {{ form_row(form.date) }}</div>
+
+
+            </div>
+            {{ form_rest(form) }}
+            <br>
+            <button class="btn btn-primary"> Ajouter</button>
+            {{ form_end(form) }}
+            <br>
+        </div>
+
+{% endblock %}

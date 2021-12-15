@@ -1,0 +1,72 @@
+{% extends 'Back/base.html.twig' %}
+{% block content %}
+    <br>
+    <div class="container mt -4" style="margin-right: 0px">
+
+<div class="content">
+
+
+
+            <div class="row">
+                <div class="col-md-6 d-flex align-items-stretch" data-aos="fade-up">
+
+
+
+
+
+                </div>
+
+                <p>{{ Article }}</p>
+            </div>
+            <div class="blog-comments">
+
+                <h4 class="comments-count"> Commentaire</h4>
+                {% for com in Commentaire %}
+                    <div id="comment-1" class="comment">
+                        <div class="d-flex">
+
+                            <div>
+                                <h5><a href="">Utilisateur</a> </h5>
+                                <time datetime="27-04-2021">27 Avr, 2021</time>
+                                <div>
+                                    {{ com.commentaire}}
+                                </div>
+                                <form method="post" action="{{ path ('supprimercomcoach', {'id' : com.id})}}">
+                                    <input type="hidden" name="_method" value="DELETE">
+                                    <button class="btn btn-success">supprimer</button>
+                                </form>
+
+
+
+                            </div>
+                        </div>
+
+                    </div><!-- End comment #1 -->
+                {% endfor %}
+                <td>
+
+
+
+
+
+
+                    <div >
+
+
+
+
+                        {{form_start(format ,{'attr': {'novalidate': 'novalidate'}} ) }}
+                        {{form_end(format) }}
+
+                        {{ form_errors(format) }}
+
+
+
+
+                    </div>
+
+            </div><!-- End blog comments -->
+        </div>
+    </section><!-- End Features Section -->
+    </div>
+{% endblock %}

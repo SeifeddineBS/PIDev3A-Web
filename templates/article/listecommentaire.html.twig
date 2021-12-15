@@ -1,0 +1,63 @@
+{% extends 'Back/base.html.twig' %}
+
+{% block content %}
+
+    <div class="container mt -4" style="margin-right: 110px">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="header">
+
+
+                        </div>
+
+                        <div class="content table-responsive ">
+                            <table class="table table-hover table-striped">
+                                <thead>
+
+                                <th>commentaire</th>
+                                <th>date</th>
+                                <th>Supprimer</th>
+
+                                </thead>
+                                <tbody>
+                                {% for activite in Commentaire %}
+                                    <tr>
+
+                                        <td>{{ activite.commentaire}}</td>
+                                        <td>{{ activite.date}}</td>
+
+
+
+
+                                        <td> <form method="post" action="{{ path ('supprimercomm', {'id' : activite.id})}}">
+                                                <input type="hidden" name="_method" value="DELETE">
+                                                <button class="btn btn-success">supprimer</button>
+                                            </form>
+
+
+
+
+                                        </td>
+
+                                    </tr>
+                                {% endfor %}
+
+
+
+                                </tbody>
+                            </table>
+
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+
+
+
+{% endblock %}

@@ -1,0 +1,72 @@
+security:
+    # https://symfony.com/doc/current/security.html#where-do-users-come-from-user-providers
+    encoders:
+        App\Entity\User:
+            algorithm: md5
+            encode_as_base64: false
+            iterations: 0
+    providers:
+        my_provider:
+            entity:
+                class: App\Entity\User
+                property: email
+        users_in_memory: { memory: null }
+        test:
+            entity:
+                class: App\Entity\User
+    firewalls:
+        dev:
+            pattern: ^/(_(profiler|wdt)|css|images|js)/
+            security: false
+        main:
+            anonymous: lazy
+
+            form_login:
+                login_path: loginFront
+                check_path: loginFront
+                provider: my_provider
+                success_handler: redirect.after.login
+
+            two_factor:
+                auth_form_path: 2fa_login    # The route name you have used in the routes.yaml
+                check_path: 2fa_login_check  # The route name you have used in the routes.yaml
+                provider: test
+                success_handler: redirect.after.login
+            guard:
+                authenticators:
+                    - App\Controller\Front\Security\GoogleAuthenticator
+                provider: test
+
+            logout:
+                path: /logout
+                target : /
+
+            remember_me:
+                name: Security
+                secret: '%kernel.secret%'
+                lifetime: 604800
+
+            # activate different ways to authenticate
+            # https://symfony.com/doc/current/security.html#firewalls-authentication
+
+            # https://symfony.com/doc/current/security/impersonating_user.html
+            # switch_user: true
+
+    # Easy way to control access for large sections of your site
+    # Note: Only the *first* access control that matches will be used
+    access_control:
+         - { path: ^/Login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+         - { path: ^/Client/CreateAccount, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+         -  { path: ^/Client/Profil/Change_informations, roles: ROLE_CLIENT }
+         - { path: ^/Client/Profil/Change_informations, roles: ROLE_CLIENTN }
+         -  { path: ^/challenge_list, roles: ROLE_CLIENT }
+         - { path: ^/2fa, role: IS_AUTHENTICATED_2FA_IN_PROGRESS }
+         - { path: ^/mesObjectifs, roles: ROLE_CLIENT}
+         -  { path: ^/listArticle1, roles: ROLE_CLIENT}
+         - { path: ^/MesChallenges, roles: ROLE_CLIENT}
+
+    role_hierarchy:
+
+
+
+

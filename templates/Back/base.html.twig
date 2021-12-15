@@ -1,0 +1,393 @@
+{% block title %}
+  <title>Aura</title>
+{% endblock %}
+
+{% block css %}
+
+
+  <meta charset="utf-8" />
+  <link rel="apple-touch-icon" sizes="76x76" href={{ asset('../assets/img/apple-icon.png') }}>
+  <link rel="icon" type="image/png" href={{ asset('../assets/img/favicon.ico') }}>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
+  <!--     Fonts and icons     -->
+  <link href={{ asset('https://fonts.googleapis.com/css?family=Montserrat:400,700,200') }} rel="stylesheet" />
+  <link rel="stylesheet" href={{ asset('https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css') }} />
+  <!-- CSS Files -->
+  <link href={{ asset('../assets/css/bootstrap.min.css') }} rel="stylesheet" />
+  <link href={{ asset('../assets/css/light-bootstrap-dashboard.css?v=2.0.0 ') }} rel="stylesheet" />
+  <link href={{ asset('../assets/css/demo.css') }} rel="stylesheet" />
+
+
+
+
+  <link href={{ asset('assets/css/style.css') }} rel="stylesheet">
+{% endblock %}
+{% block link %}
+{% endblock %}
+
+{% block js %}
+<script src={{ asset('../assets/js/core/jquery.3.2.1.min.js') }} type="text/javascript"></script>
+<script src={{ asset('../assets/js/core/popper.min.js') }} type="text/javascript"></script>
+<script src={{ asset('../assets/js/core/bootstrap.min.js') }} type="text/javascript"></script>
+<script src={{ asset('') }}"../assets/js/plugins/bootstrap-switch.js"></script>
+<!--  Google Maps Plugin    -->
+<script type="text/javascript" src={{ asset('https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE') }}></script>
+<!--  Chartist Plugin  -->
+<script src={{ asset('../assets/js/plugins/chartist.min.js"') }}></script>
+<!--  Notifications Plugin    -->
+<script src={{ asset('../assets/js/plugins/bootstrap-notify.js') }}></script>
+<!-- Control Center for Light Bootstrap Dashboard: scripts for the example pages etc -->
+<script src={{ asset('../assets/js/light-bootstrap-dashboard.js?v=2.0.0') }} type="text/javascript"></script>
+<!-- Light Bootstrap Dashboard DEMO methods, don't include it in your project! -->
+<script src={{ asset('../assets/js/demo.js"') }}></script>
+{% endblock %}
+{% block header  %}
+  <nav class="navbar navbar-expand-lg " color-on-scroll="500">
+    <div class="container-fluid">
+      <button href="" class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-bar burger-lines"></span>
+        <span class="navbar-toggler-bar burger-lines"></span>
+        <span class="navbar-toggler-bar burger-lines"></span>
+      </button>
+      <div class="collapse navbar-collapse justify-content-end" id="navigation">
+        <ul class="nav navbar-nav mr-auto">
+
+
+
+        </ul>
+        <ul class="navbar-nav ml-auto">
+
+
+
+
+
+          {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+
+
+
+
+              {% if app.user.role == 'CoachV'  %}
+                <li class="nav-item">
+              <p class="nav-link"> Coach: {{ app.user.nom }}  {{ app.user.prenom }}</p>
+                </li>
+              {% elseif app.user.role == 'CoachNV' %}
+                <li class="nav-item">
+                <a class="nav-link" href="{{ path('sendMailCoachNV') }}"> Votre compte n'est pas encore verifie <br>Envoyer un email a l'administration</a>
+                </li>
+                <li class="nav-item">
+                  <p class="nav-link"> Coach: {{ app.user.nom }}  {{ app.user.prenom }}</p>
+                </li>
+
+
+              {% elseif app.user.role == 'Admin' or app.user.role =='SAdmin' %}
+                {% if app.user.notifyAddCoach == 'Y'  %}
+
+
+                  <li style="margin-right: 550px">
+
+                    <a  style="color: red"href={{ path('lists_coachs') }}>
+
+                      <span>Un nouveau coach vient de s'inscrire !</span>
+                      <span class="badge"></span>
+                    </a>
+                    <br>
+                  </li>
+
+                {% endif %}
+
+                <li class="nav-item">
+                <p class="nav-link"> Admin: {{ app.user.nom }}  {{ app.user.prenom }}</p>
+                </li>
+
+
+
+
+
+
+              {% endif %}
+            <li class="nav-item">
+              <a class="nav-link" href={{ path('logout') }}>Se deconnecter
+              </a>
+            </li>
+
+
+             {% else %}
+
+               <li class="nav-item">
+                 <a class="nav-link" href={{ path('loginFront') }}>Se Connecter
+                 </a>
+               </li>
+
+          {% endif %}
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+
+
+
+
+
+
+
+
+
+
+{% endblock %}
+
+
+{% block sidebar %}
+  <div class="sidebar" data-image="../assets/img/sidebar-5.jpg">
+    <!--
+Tip 1: You can change the color of the sidebar using: data-color="purple | blue | green | orange | red"
+
+Tip 2: you can also add an image using data-image tag
+-->
+    <div class="sidebar-wrapper">
+      <div class="logo">
+        <a href={{ path('HomeBack')}} class="simple-text">
+          Aura
+        </a>
+      </div>
+      <ul class="nav">
+        <li class="nav-item active">
+          <a class="nav-link" href={{ path('HomeBack') }}>
+            <i class="nc-icon nc-chart-pie-35"></i>
+            <p>Acceuil</p>
+          </a>
+        </li>
+
+
+        <li>
+
+        </li>
+        {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+        {% if app.user.role=='Admin' or app.user.role=='SAdmin' %}
+          <!--...
+          Mohamed -->
+          <li>
+            <a class="nav-link" href={{ path('listActivite') }}>
+              <i class="nc-icon nc-puzzle-10"></i>
+              <p>Activites</p>
+            </a>
+          </li>
+          <li>
+            <a class="nav-link" href={{ path('listTherapie') }}>
+              <i class="nc-icon nc-atom"></i>
+              <p>Therapies</p>
+            </a>
+          </li>
+          <!--...
+          End Mohamed -->
+
+
+          <!--...
+          Chirine -->
+          <li>
+            <a class="nav-link" href={{ path('objectifspred') }}>
+              <i class="nc-icon nc-notes"></i>
+              <p>Objectifs predefinis</p>
+            </a>
+          </li>
+          <li>
+            <a class="nav-link" href={{ path('objectifsClients') }}>
+              <i class="nc-icon nc-notes"></i>
+              <p>Objectifs clients</p>
+            </a>
+          </li>
+
+          <!--...
+          End Chirine  -->
+
+          <!--...
+                   Nour M  -->
+
+          <li>
+            <a class="nav-link" href="/challenge/admin/home">
+              <i class="nc-icon nc-notes"></i>
+              <p>List Challenges </p>
+            </a>
+          </li>
+          <li>
+            <a class="nav-link" href="/challenge/admin/listPropochallenge">
+              <i class="nc-icon nc-send"></i>
+              <p>Proposition challenge</p>
+            </a>
+          </li>
+
+          <li>
+            <a class="nav-link" href="/classement/homeAdmin">
+              <i class="nc-icon nc-notes"></i>
+              <p>Classement</p>
+            </a>
+          </li>
+
+
+          <li>
+            <a class="nav-link" href="/niveau/home">
+              <i class="nc-icon nc-chart"></i>
+              <p>Niveau</p>
+            </a>
+          </li>
+          <li>
+
+
+
+
+
+
+
+
+            <!--...
+                   End Nour M  -->
+          <!-- Akrem
+          -->
+          <li>
+            <a class="nav-link" href={{ path('listArticle') }}>
+              <i class="nc-icon nc-notes"></i>
+              <p>Articles</p>
+            </a>
+          </li>
+
+          <li>
+            <a class="nav-link" href={{ path('listecommentaire') }}>
+              <i class="nc-icon nc-notes"></i>
+              <p>Commentaire</p>
+            </a>
+          </li>
+
+
+          <!-- End Akrem
+          -->
+
+          <li>
+            <a class="nav-link" href={{ path('afficherentraide') }}>
+              <i class="nc-icon nc-circle-09"></i>
+              <p>Entraides</p>
+            </a>
+          </li>
+          <li>
+            <a class="nav-link" href={{ path('afficherreponse') }}>
+              <i class="nc-icon nc-notes"></i>
+              <p>Reponses</p>
+            </a>
+          </li>
+
+          <a class="nav-link" href={{ path('lists_clients') }}>
+            <i class="nc-icon nc-notes"></i>
+            <p>Liste Clients</p>
+          </a>
+
+
+          <li>
+          <a class="nav-link" href={{ path('lists_coachs') }}>
+            <i class="nc-icon nc-notes"></i>
+            <p>Liste Coachs</p>
+          </a>
+        </li>
+
+        {% endif %}
+
+        {% endif %}
+
+        {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+        {% if app.user.role == 'CoachV'  %}
+
+          <li>
+            <a class="nav-link" href={{ path('newPropoact') }}>
+              <i class="nc-icon nc-puzzle-10"></i>
+              <p>Proposer activite</p>
+            </a>
+          </li>
+          <li>
+            <a class="nav-link" href={{ path('ajouterPropoTherapie') }}>
+              <i class="nc-icon nc-atom"></i>
+              <p>Proposer therapie</p>
+            </a>
+          </li>
+          <li>
+            <a class="nav-link" href="{{ path('listarticlecoach') }}">
+              <i class="nc-icon nc-atom"></i>
+              <p>Articles</p>
+            </a>
+          </li>
+
+          <li>
+            <a class="nav-link" href="/challenge/coach/home">
+              <i class="nc-icon nc-puzzle-10"></i>
+              <p>Challenges</p>
+            </a>
+          </li>
+
+          <li>
+            <a class="nav-link" href="/challenge/coach/valide">
+              <i class="nc-icon nc-atom"></i>
+              <p>Challenges Valides</p>
+            </a>
+          </li>
+          <li>
+            <a class="nav-link" href="/challenge/coach/nonValide">
+              <i class="nc-icon nc-puzzle-10"></i>
+              <p>Proposition challenge</p>
+            </a>
+          </li>
+
+
+          <li>
+            <a class="nav-link" href="/classement/homeCoach">
+              <i class="nc-icon nc-atom"></i>
+              <p>Classement</p>
+            </a>
+          </li>
+          <a class="nav-link" href={{ path('lists_clients') }}>
+            <i class="nc-icon nc-notes"></i>
+            <p>Liste Clients</p>
+          </a>
+
+
+        {% endif %}
+        {% endif %}
+
+
+
+
+
+
+
+        {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+
+          {% if app.user.role == 'CoachV' or app.user.role=='CoachNV' %}
+
+            <a class="nav-link" href={{ path('ProfilCoach') }}>
+              <i class="nc-icon nc-circle-09"></i>
+              <p>Mon Profile</p>
+            </a>
+          {% elseif app.user.role == 'Admin' or app.user.role =='SAdmin' %}
+            <a class="nav-link" href={{ path('ProfilAdmin') }}>
+              <i class="nc-icon nc-circle-09"></i>
+              <p>Mon Profile</p>
+            </a>
+          {% endif %}
+          {% endif %}
+
+
+        </li>
+
+      </ul>
+    </div>
+  </div>
+
+
+{% endblock %}
+
+{% block content %}
+
+
+{% endblock %}
+
+{% block footer %}
+
+{% endblock %}
+

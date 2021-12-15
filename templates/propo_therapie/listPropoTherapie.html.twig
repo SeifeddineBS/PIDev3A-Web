@@ -1,0 +1,66 @@
+{% extends 'Back/base.html.twig' %}
+
+{% block content %}
+
+
+    <div class="container mt -4" style="margin-right: 100px">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="header">
+                            <h4 class="title">Proposition</h4>
+                            <p class="category">Therapie</p>
+                        </div>
+                        <div class="content table-responsive  ">
+                            <table class="table table-hover table-striped">
+                                <thead>
+                                <th>Coach</th>
+                                <th>sujet</th>
+                                <th>date</th>
+                                <th>nombremax</th>
+                                <th>lieu</th>
+                                <th>Modifier</th>
+                                <th>Supprimer</th>
+                                </thead>
+                                <tbody>
+                                {% for activite in PropoTherapie %}
+                                    <tr>
+                                        <td>{{ activite.idcoach}}</td>
+                                        <td>{{ activite.sujet}}</td>
+                                        <td>{{ activite.date}}</td>
+                                        <td>{{ activite.nombremax}}</td>
+                                        <td>{{ activite.lieu}}</td>
+
+                                        <td><a  href="{{ path("approuverth",{"id":activite.id}) }}">Approuver </a>
+
+                                        </td>
+                                        <td> <form method="post" action="{{ path ('supprimerPropoTherapie', {'id' : activite.id})}}" style="color: red">
+                                                <input type="hidden" name="_method" value="DELETE" style="color: red">
+                                                <button class="btn btn-success" style="color: red">Refuser</button>
+                                            </form>
+                                        </td>
+
+                                    </tr>
+                                {% endfor %}
+
+
+
+                                </tbody>
+                            </table>
+
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+
+            </div>
+        </div>
+    </div>
+
+
+
+{% endblock %}

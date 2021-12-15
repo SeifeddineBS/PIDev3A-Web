@@ -1,0 +1,87 @@
+{% extends 'Back/base.html.twig' %}
+{% block link %}
+<link href={{ asset('../assets/css/searchStyle.css') }} rel="stylesheet" />
+
+{% endblock %}
+
+{% block content %}
+    <div class="wrapper">
+        <div class="main-panel">
+
+            <div class="content">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="card strpied-tabled-with-hover">
+                                <div class="card-header ">
+                                    <h4 class="card-title">Liste Coachs</h4>
+                                </div>
+                                <div class="main">
+                                    {{ form_start(form, {attr: {'novalidate': 'novalidate'}}) }}
+                                    {{ form_row(form._token) }}
+                                    <div style="margin-left: 210px">{{ form_row(form.critere) }}</div>
+
+                                    <div class="input-group">
+
+                                        {{ form_widget(form.inputRecherche,{ 'attr': {'class': "form-control",
+                                            'placeholder': 'Recherche'|trans} }) }}
+
+
+                                        <input class="btn btn-secondary" type="submit" value ="rechercher">
+
+
+                                    </div>
+                                </div>
+
+                                {{ form_end(form, {'render_rest': false}) }}
+
+                            </div>
+                                <div class="card-body table-full-width table-responsive">
+                                    <table class="table table-hover table-striped">
+                                        <thead>
+                                        <th>CIN</th>
+                                        <th>Nom</th>
+                                        <th>Prenom</th>
+                                        <th>Email</th>
+                                        <th>Tel</th>
+                                        <th>Specialite</th>
+                                        <th>Etat</th>
+
+                                        </thead>
+                                        <tbody>
+
+                                        {% for user in users %}
+
+
+                                            <tr >
+                                                <td>{{ user.id }}</td>
+                                                <td>{{ user.nom }}</td>
+                                                <td>{{ user.prenom }}</td>
+                                                <td>{{ user.email }}</td>
+                                                <td>{{ user.tel }}</td>
+                                                <td>{{ user.specialite }}</td>
+                                                {% if user.role=="CoachNV" %}
+                                                    <td> Compte non verifie</td>
+                                                <td> <a href={{ path('verifierCoach',{'id':user.id}) }}>Verifier coach</a></td>
+                                                {% elseif user.role=="CoachV" %}
+                                                    <td> Compte verifie</td>
+                                                    <td> <a href={{ path('non_verifierCoach',{'id':user.id}) }}> Non Verifier coach</a></td>
+                                                {% endif %}
+
+
+                                            </tr >
+                                        {% endfor %}
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

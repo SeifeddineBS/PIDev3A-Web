@@ -1,0 +1,131 @@
+{% extends 'Back/base.html.twig' %}
+{% block content %}
+    <br>
+    <div class="content">
+
+
+
+        <div class="container mt -4" style="margin-right: 110px">
+            <h1>Modifier une Activite</h1>
+
+            <div class="form-group">
+
+
+                {{ form_start(our_form,{attr: {'novalidate': 'novalidate'}} ) }}
+
+
+
+                <div class="form-control" style="width:800px;text-align: center;height: auto">
+                    {{ form_errors(our_form.date,{attr: {'novalidate': 'novalidate'}}) }}
+
+                    <i class="fa fa-calendar"></i>
+
+                    {{ form_label(our_form.date) }}
+
+                    {{ form_widget(our_form.date,{attr: {'novalidate': 'novalidate'}}) }}
+
+                    <small>{{ form_help(our_form.date,{attr: {'novalidate': 'novalidate'}}) }}</small>
+
+                </div>
+
+                <div class="form-control" style="width:800px;text-align: center;height: auto">
+                    <div class="form-error">
+                        {{ form_errors(our_form.type,{attr: {'novalidate': 'novalidate'}}) }}
+                    </div>
+                    <i class="fa form-check-input"></i>
+                    {{ form_label(our_form.type) }}
+                    {{ form_widget(our_form.type,{attr: {'novalidate': 'novalidate'}}) }}
+
+                    <small>{{ form_help(our_form.type,{attr: {'novalidate': 'novalidate'}}) }}</small>
+
+
+                </div>
+
+                <div class="form-control" style="width:800px;text-align: center;height: auto">
+                    <div class="form-error">
+                        {{ form_errors(our_form.id,{attr: {'novalidate': 'novalidate'}}) }}
+                    </div>
+                    {{    form_label(our_form.id) }}
+                    {{ form_widget(our_form.id,{attr: {'novalidate': 'novalidate'}}) }}
+
+                    <small>{{ form_help(our_form.id,{attr: {'novalidate': 'novalidate'}}) }}</small>
+
+
+                </div>
+
+                <div class="form-control" style="width:800px;text-align: center;height: auto">
+                    <div class="form-error">
+                        {{ form_errors(our_form.description,{attr: {'novalidate': 'novalidate'}} ) }}
+                    </div>                                        {{ form_label(our_form.description)}}
+                    {{ form_widget(our_form.description,{attr: {'novalidate': 'novalidate'}}) }}
+
+                    <small>{{ form_help(our_form.description,{attr: {'novalidate': 'novalidate'}} ) }}</small>
+
+
+                </div>
+
+                <div class="form-control" style="width:800px;text-align: center;height: auto">
+                    <div class="form-error">
+                        {{ form_errors(our_form.idcoach,{attr: {'novalidate': 'novalidate'}}) }}
+                    </div>
+                    <i class="fa form-check"></i>
+                    {{ form_label(our_form.idcoach) }}
+                    {{ form_widget(our_form.idcoach,{attr: {'novalidate': 'novalidate'}})  }}
+
+                    <small>{{ form_help(our_form.idcoach,{attr: {'novalidate': 'novalidate'}}) }}</small>
+
+
+                </div>
+
+                <div class="form-control" style="width:800px;text-align: center;height: auto">
+                    <div class="form-error">
+                        {{ form_errors(our_form.nombremax,{attr: {'novalidate': 'novalidate'}}) }}
+                    </div>
+                    {{ form_label(our_form.nombremax) }}
+                    {{ form_widget(our_form.nombremax,{attr: {'novalidate': 'novalidate'}}) }}
+
+                    <small>{{ form_help(our_form.nombremax,{attr: {'novalidate': 'novalidate'}}) }}</small>
+
+
+                </div>
+
+                <div class="form-control" style="width:800px;text-align: center;height: auto">
+                    <div class="form-error">
+                        {{ form_errors(our_form.lieu,{attr: {'novalidate': 'novalidate'}}) }}
+                    </div>
+                    <i class="fa form-check-input"></i>
+                    {{ form_label(our_form.lieu) }}
+                    {{ form_widget(our_form.lieu,{attr: {'novalidate': 'novalidate'}}) }}
+
+                    <small>{{ form_help(our_form.lieu,{attr: {'novalidate': 'novalidate'}}) }}</small>
+
+
+                </div>
+                <div class="form-control" style="width:800px;text-align: center;height: auto">
+                    <div class="form-error">
+                        {{ form_errors(our_form.duree,{attr: {'novalidate': 'novalidate'}}) }}
+                    </div>
+                    <i class="fa form-check-input"></i>
+                    {{ form_label(our_form.duree) }}
+                    {{ form_widget(our_form.duree,{attr: {'novalidate': 'novalidate'}}) }}
+
+                    <small>{{ form_help(our_form.duree,{attr: {'novalidate': 'novalidate'}}) }}</small>
+
+
+                </div>
+
+
+
+
+
+                {{ form_end(our_form,{attr: {'novalidate': 'novalidate'}}) }}
+
+            </div>
+
+
+        </div>
+    </div>
+
+{% endblock %}
+
+

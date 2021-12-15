@@ -1,0 +1,47 @@
+{% extends 'Front/base.html.twig' %}
+{% block content %}
+
+    <div class="container mt -4">
+        <br>
+        <br>
+        <br>
+        <br>
+
+        <h2>Ajouter une Entraide</h2>
+        <br>
+        <br>
+
+        {{ form_start(form, {attr: {'novalidate': 'novalidate'}}) }}
+        <div class="row">
+            <div class="col-md-8"> {{ form_row(form.categorie) }}</div>
+            <br>
+            <br>
+            <br>
+            <br>
+            <div class="col-md-12"> {{ form_row(form.date) }}</div>
+            <div class="col-md-4"> {{ form_row(form.email) }}</div>
+            <br>
+            <br>
+            <br>
+            <br>
+            <div class="col-md-4"> {{ form_row(form.question) }}</div>
+
+        </div>
+        {{ form_rest(form) }}
+        <br>
+        <br>
+        <br>
+        <br>
+        <button class="btn btn-primary"> <h4>Ajouter </h4>  </button>
+        {{ form_end(form) }}
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+    </div>
+
+{% endblock %}

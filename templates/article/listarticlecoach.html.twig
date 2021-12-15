@@ -1,0 +1,92 @@
+{% extends 'Back/base.html.twig' %}
+{% block content %}
+<br>
+
+    <div class="container mt -4" style="margin-right: 0px">
+    </section><!-- End Breadcrumbs -->
+    <section id="portfolio" class="portfolio">
+
+        <a href="{{ path('ajouterarticlecoach')}}" class="btn btn-primary">Ajouter un article</a>
+        <div>
+            <div style="text-align: right;"/>
+
+
+            <div class="navigation">
+                {{ knp_pagination_render(Article ) }}
+            </div>
+
+            <div class="row">
+                <div class="col-lg-12 d-flex justify-content-center" data-aos="fade-up">
+                    <ul id="portfolio-flters">
+                        <li data-filter="*" class="filter-active">All</li>
+                        <li data-filter=".filter-card">mes article</li>
+                        <li data-filter=".filter-web">article</li>
+
+                    </ul>
+                </div>
+
+            </div>
+            <div class="row portfolio-container" data-aos="fade-up">
+
+
+
+                {% for activite in Article %}
+
+                    <div class="col-lg-4 col-md-6 portfolio-item filter-card">
+                        <div class="portfolio-wrap">
+                            <img src="assets/img/portfolio/portfolio-2.jpg" class="img-fluid" alt="">
+                            <div class="portfolio-info">
+                                <h4>{{ activite.titre }}</h4>
+                                <h5>{{ activite.theme }}</h5>
+
+                                <p>{{ activite.date }}</p>
+                                <div class="portfolio-links">
+                                    <a href="assets/img/portfolio/portfolio-4.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title=""><i class="bx bx-plus"></i></a>
+                                    <a  href="{{ path("modifierArticlecoach",{"id":activite.id}) }}">edit</a>
+
+                                    <form method="post" action="{{ path ('supprimercoach', {'id' : activite.id})}}">
+                                        <input type="hidden" name="_method" value="DELETE">
+                                        <button class="btn btn-success">remove</button>
+                                    </form>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+
+                {% for activite in Articleapp %}
+
+                    <div class="col-lg-4 col-md-6 portfolio-item filter-web">
+                        <div class="portfolio-wrap">
+                            <img src="assets/img/portfolio/portfolio-2.jpg" class="img-fluid" alt="">
+                            <div class="portfolio-info">
+                                <h4>{{ activite.titre }}</h4>
+                                <h5>{{ activite.theme }}</h5>
+
+                                <p>{{ activite.date }}</p>
+                                <div class="portfolio-links">
+                                    <a href="assets/img/portfolio/portfolio-4.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title=""><i class="bx bx-plus"></i></a>
+                                    <a  href="{{ path("articledetailcoach",{"id":activite.id}) }}">Article</a>
+
+
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+
+
+
+            </div>
+            <div class="navigation">
+                {{ knp_pagination_render(Articleapp) }}
+            </div>
+        </div>
+
+    </section>
+    </div>
+
+
+{% endblock %}

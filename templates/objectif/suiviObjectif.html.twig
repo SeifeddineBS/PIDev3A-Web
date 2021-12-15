@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+    <br>
+    <br>
+    <br>
+    <br>
+    <section id="breadcrumbs" class="breadcrumbs">
+        <div class="breadcrumb-hero">
+            <div class="container">
+                <div class="breadcrumb-hero">
+                    <h2>Ajouter un suivi</h2>
+                    <p>“Avoir des objectifs est non seulement nécessaire pour nous motiver, mais c’est essentiel pour que nous restions en vie.” </p>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <ol>
+                <li><a href="index.html">Home</a></li>
+                <li>Ajout d'un suivi</li>
+            </ol>
+        </div>
+    </section><!-- End Breadcrumbs -->
+
+
+    <div class="container mt -4">
+        <h2>
+            {{ objectif.description}}
+        </h2>
+        {{ form_start(form, {attr: {'novalidate': 'novalidate'}}) }}
+        <div class="row">
+            <div class="col-md-8"> {{ form_row(form.valeur) }}</div>
+        </div>
+        <div class="row">
+            <div class="col-md-4"> {{ form_row(form.date) }}</div>
+            <div class="col-md-4"> {{ form_row(form.color) }}</div>
+        </div>
+        {{ form_rest(form) }}
+        <br>
+        <button class="btn btn-primary"> Ajouter</button>
+        {{ form_end(form) }}
+        <br>
+    </div>
+{% endblock %}
